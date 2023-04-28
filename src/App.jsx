@@ -7,9 +7,51 @@ import { Coment } from "./components/Comment";
 import styles from "./App.module.css";
 import "./global.css";
 
-import peopleOne from './assets/people-one.svg'
-import peopleTwo from './assets/people-two.svg'
+import peopleOne from "./assets/people-one.svg";
+import peopleTwo from "./assets/people-two.svg";
 
+// author: { avatar_url: "",name: "", role: ""}
+//  published: Date
+//  content: String
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/Kleydsonpessanha.png",
+      name: "Kleydson Pessanha",
+      role: "Front end Developer",
+    },
+
+    content: [
+      { type: "paragraph", content: "Fala galeraa 👋" },
+      {
+        type: "paragraph",
+        content:
+          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+      },
+      { type: "link", content: "kleydsonpessanha.vercel.app" },
+    ],
+    publishedAt: new Date("2023-05-03 20:00:00"),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://github.com/diego3g.png",
+      name: "Diego Fernandes",
+      role: "CTO @ Rocketseat",
+    },
+
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de concluir mais uma aula, aqui na rocketseat', },
+      { type: 'paragraph', content: 'O linke vai está logo abaixo' },
+      { type: 'link', content: "rocketseat.com" },
+    ],
+    publishedAt: new Date("2023-05-22 20:20:00"),
+  },
+  
+];
 
 export function App() {
   return (
@@ -20,20 +62,15 @@ export function App() {
         <Sidebar />
 
         <main>
-        <Post
-            image="https://github.com/Kleydsonpessanha.png"
-            author="Kleydson Pessanha"
-            content="Dev Front-End"
-            post="há 1h"
-          />
-
+        {posts.map(post => {
+          return ( 
           <Post
-            image={peopleTwo}
-            author="Adriana Falcão"
-            post="há 1h"
-         
-         />
-
+             author={post.author}
+             content={post.content}
+             publishedAt={post.publishedAt}
+          />
+          )
+          })}
         </main>
       </div>
     </div>
