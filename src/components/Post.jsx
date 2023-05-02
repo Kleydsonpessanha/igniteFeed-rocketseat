@@ -5,9 +5,19 @@ import { Avatar } from './Avatar'
 
 import styles from './Post.module.css'
 import peopleOne from '../assets/people-one.svg'
+import { useState } from 'react'
 
+
+// estado = variáveis que eu quero que o componente monitore 
 
 export function Post({ author, publishedAt, content }) {
+
+   const [comments, setComments] = useState([
+     'Post muito bacana, hein?!'
+  ])
+    
+  const [newCommentText, setNewCommentText] = useState('')
+
     const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'ás' HH:mm'h'", {
       locale: ptBR
     })
@@ -16,7 +26,29 @@ export function Post({ author, publishedAt, content }) {
       locale: ptBR,
       addSuffix: true
     })
+    
+    
+    function handleCreateNewComment() {
+      event.preventDefault()
+      setComments([...comments, newCommentText])
+      setNewCommentText('')
+    }
+    
+    
+        function handleNewCommentChange() {
+          setNewCommentText(event.target.value) 
+        }
 
+
+        function deleteComment(commentToDelete) {
+            const commentsWithoutDeleteOne = comments.filter(comment => {
+              return comment != commentToDelete
+            })
+
+          // imutabilidade => as variáveis não sofrem mutação, nós criamos um novo valor (um novo espaço na memória)
+          // o setComment está atualizando o estado dos comentários.
+        setComments(commentsWithoutDeleteOne)
+        }
     return (
       <article className={styles.post}>
        <header>
@@ -39,16 +71,19 @@ export function Post({ author, publishedAt, content }) {
             if (line.type === 'paragraph') {
               return <p>{line.content}</p>;
             } else if (line.type === 'link') {
-              return <p><a href="">{line.content}</a></p>
+              return <p ><a href="">{line.content}</a></p>
             }
           })}
        </div>
 
-       <form className={styles.comentForm}>
+       <form onSubmit={handleCreateNewComment} className={styles.comentForm}>
         <strong>Deixe seu feedback</strong>
 
         <textarea
+          name="comment"
+          value={newCommentText}
           placeholder='deixe um comentário'
+          onChange={handleNewCommentChange}
         />
 
         <footer>   <button type='submit'>Publicar</button></footer>
@@ -56,9 +91,15 @@ export function Post({ author, publishedAt, content }) {
 
 
        <div className={styles.commentList}>
-        <Coment/>
-        <Coment/>
-        <Coment/>
+          {comments.map(comment => {
+            return (
+            <Coment
+               key={comment}
+               content={comment} 
+               ondeleteComment={deleteComment}
+            />
+            )
+          })}
        </div>
       </article>
     )
