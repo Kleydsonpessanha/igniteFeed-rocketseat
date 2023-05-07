@@ -17,6 +17,7 @@ const posts = [
     id: 1,
     author: {
       avatarUrl: "https://github.com/Kleydsonpessanha.png",
+      portfolio: "https://kleydsonpessanha.vercel.app",
       name: "Kleydson Pessanha",
       role: "Front end Developer",
     },
@@ -26,8 +27,9 @@ const posts = [
       {
         type: "paragraph",
         content:
-          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+          "Acabei de subir esse projeto la no meu portifa. É um projeto que fiz na Rocketseat, evento da Rocketseat.🚀",
       },
+      { type: "paragraph", content: "Confira aqui" },
       { type: "link", content: "kleydsonpessanha.vercel.app" },
     ],
     publishedAt: new Date("2023-05-03 20:00:00"),
@@ -36,6 +38,7 @@ const posts = [
     id: 2,
     author: {
       avatarUrl: "https://github.com/marinapsvreis.png",
+      portfolio: "https://github.com/marinapsvreis",
       name: "Marina Portugal",
       role: "FullStack Developer at @Alterdata Software",
     },
@@ -43,8 +46,8 @@ const posts = [
     content: [
       { type: 'paragraph', content: 'Fala galeraa 👋' },
       { type: 'paragraph', content: 'Acabei de concluir mais uma aula, aqui na rocketseat', },
-      { type: 'paragraph', content: 'O linke vai está logo abaixo' },
-      { type: 'link', content: "marinapsvreis.com.br" },
+      { type: 'paragraph', content: 'Confira no meu github' },
+      { type: 'link', content: "https://github.com/marinapsvreis" },
     ],
     publishedAt: new Date("2023-05-22 20:20:00"),
   },
@@ -52,6 +55,7 @@ const posts = [
       id: 3,
       author: {
       avatarUrl: "https://github.com/filipedev6.png",
+      portfolio: "https://github.com/filipedev6",
       name: "Felipe Dev",
       role: "Front end Developer",
     },
@@ -63,7 +67,7 @@ const posts = [
         content:
           "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
       },
-      { type: "link", content: "filipe.vercel.app" },
+      { type: "link", content: "https://github.com/filipedev6" },
     ],
     publishedAt: new Date("2023-05-01 20:00:00"),
   },
